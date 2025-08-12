@@ -6,6 +6,7 @@ import time
 import numpy as np
 
 
+
 # ------------------------------------------------------------------
 # CONFIG – fill the whole display
 # ------------------------------------------------------------------
@@ -13,12 +14,13 @@ SCREEN_W, SCREEN_H = 1920, 1080        # <-- set to your monitor (e.g. 1366, 768
 WIN_SCORE = 5                           # first to 5 wins the match
 
 
+
 # ------------------------------------------------------------------
 # UI helper functions  (from the display build)
 # ------------------------------------------------------------------
 def draw_static_ui(bg):
-    cv2.putText(bg, "ROCK  -  PAPER  -  SCISSORS", (30, 60),
-                cv2.FONT_HERSHEY_SIMPLEX, 1.1, (255, 255, 255), 2)
+    # Removed title text "ROCK  -  PAPER  -  SCISSORS"
+    return
 
 
 def draw_dynamic_ui(bg, scores, timer, state_result, start_game):
@@ -63,6 +65,7 @@ def paste_panel(bg, rel, content):
     return bg
 
 
+
 # ------------------------------------------------------------------
 # BACK-END initialisation  (original logic + tweaks)
 # ------------------------------------------------------------------
@@ -101,6 +104,7 @@ for tag, ref in {"BG": imgBG_original,
                  "GameOver": imgGameOver}.items():
     if ref is None:
         raise FileNotFoundError(f"Missing image for {tag}")
+
 
 
 # ------------------------------------------------------------------
@@ -142,6 +146,7 @@ def recognize_player_move(hands):
     elif finger_pattern == [0, 1, 1, 0, 0]:
         return 3  # Scissors
     return None
+
 
 
 # ------------------------------------------------------------------
@@ -270,6 +275,7 @@ def main():
 
     cap.release()
     cv2.destroyAllWindows()
+
 
 
 # ------------------------------------------------------------------
